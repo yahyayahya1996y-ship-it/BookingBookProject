@@ -1,3 +1,3 @@
-export const NotFound = () => {
-  return <div>Not Found</div>;
-};
+export const NotFound: React.FC = () => {
+  return <h1>Not Found</h1>
+}

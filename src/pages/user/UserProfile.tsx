@@ -1,3 +1,3 @@
-export const UserProfile = () => {
-  return <div>User Profile</div>;
-};
+export const UserProfile: React.FC = () => {
+  return <h1>User Profile</h1>
+}

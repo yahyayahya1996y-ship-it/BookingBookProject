@@ -1,4 +1,19 @@
-// ActivityLog type
+export type ActivityAction =
+  | "LOGIN"
+  | "LOGOUT"
+  | "ADD_BOOK"
+  | "UPDATE_BOOK"
+  | "DELETE_BOOK"
+  | "REQUEST_BOOKING"
+  | "ACCEPT_BOOKING"
+  | "REJECT_BOOKING"
+  | "CANCEL_BOOKING"
+  | "RETURN_BOOK";
+
 export interface ActivityLog {
-  // Properties coming soon
+  id: number;
+  userId: number;
+  action: ActivityAction;
+  message: string;
+  createdAt: string;
 }

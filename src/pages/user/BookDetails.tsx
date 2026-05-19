@@ -1,3 +1,3 @@
-export const BookDetails = () => {
-  return <div>Book Details</div>;
-};
+export const BookDetails: React.FC = () => {
+  return <h1>Book Details</h1>
+}

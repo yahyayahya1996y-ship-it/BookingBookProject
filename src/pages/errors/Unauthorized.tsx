@@ -1,3 +1,3 @@
-export const Unauthorized = () => {
-  return <div>Unauthorized</div>;
-};
+export const Unauthorized: React.FC = () => {
+  return <h1>Unauthorized</h1>
+}

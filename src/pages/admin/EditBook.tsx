@@ -1,3 +1,3 @@
-export const EditBook = () => {
-  return <div>Edit Book</div>;
-};
+export const EditBook: React.FC = () => {
+  return <h1>Edit Book</h1>
+}

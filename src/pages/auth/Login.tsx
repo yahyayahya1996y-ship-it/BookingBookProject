@@ -1,3 +1,3 @@
-export const Login = () => {
-  return <div>Login Page</div>;
-};
+export const Login: React.FC = () => {
+  return <h1>Login</h1>
+}

@@ -1,3 +1,10 @@
-export const Login: React.FC = () => {
-  return <h1>Login</h1>
-}
+const Login = () => {
+  return (
+    <div>
+      <h1>Booking Book Login Page</h1>
+      <p>This is the login page.</p>
+    </div>
+  );
+};
+
+export default Login;

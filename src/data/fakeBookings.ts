@@ -1,2 +1,3 @@
-// Fake bookings data
-export const fakeBookings = [];
+import type { Booking } from "../types/Booking";
+
+export const fakeBookings: Booking[] = [];

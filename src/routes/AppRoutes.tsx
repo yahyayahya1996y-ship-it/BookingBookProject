@@ -13,19 +13,22 @@ import RoleRoute from "./RoleRoute";
 
 // User Pages
 import UserDashboard from "../pages/user/UserDashboard";
-import { AvailableBooks } from "../pages/user/AvailableBooks";
+import UserBooksPage from "../pages/user/UserBooksPage";
 import { BookDetails } from "../pages/user/BookDetails";
 import { MyBookings } from "../pages/user/MyBookings";
 import { UserProfile } from "../pages/user/UserProfile";
 
 // Admin Pages
 import AdminDashboard from "../pages/admin/AdminDashboard";
-import { ManageBooks } from "../pages/admin/ManageBooks";
+import AdminBooksPage from "../pages/admin/AdminBooksPage";
 import { AddBook } from "../pages/admin/AddBook";
 import { EditBook } from "../pages/admin/EditBook";
 import { ManageBookings } from "../pages/admin/ManageBookings";
 import { ManageUsers } from "../pages/admin/ManageUsers";
 import { ActivityLog } from "../pages/admin/ActivityLog";
+
+// Route Guards
+import ProtectedRoute from "../components/ProtectedRoute";
 
 const AppRoutes = () => {
   return (
@@ -41,27 +44,29 @@ const AppRoutes = () => {
       {/* Error Routes */}
       <Route path="/unauthorized" element={<Unauthorized />} />
 
-      {/* User Routes - Protected with Role */}
-      <Route element={<UserLayout />}>
-        <Route element={<RoleRoute allowedRoles={["user"]} />}>
-          <Route path="/user/dashboard" element={<UserDashboard />} />
-          <Route path="/user/books" element={<AvailableBooks />} />
-          <Route path="/user/books/:id" element={<BookDetails />} />
-          <Route path="/user/my-bookings" element={<MyBookings />} />
-          <Route path="/user/profile" element={<UserProfile />} />
+      <Route element={<ProtectedRoute />}>
+        {/* User Routes - Protected with Role */}
+        <Route element={<UserLayout />}>
+          <Route element={<RoleRoute allowedRoles={["user"]} />}>
+            <Route path="/user/dashboard" element={<UserDashboard />} />
+            <Route path="/user/books" element={<UserBooksPage />} />
+            <Route path="/user/books/:id" element={<BookDetails />} />
+            <Route path="/user/my-bookings" element={<MyBookings />} />
+            <Route path="/user/profile" element={<UserProfile />} />
+          </Route>
         </Route>
-      </Route>
 
-      {/* Admin Routes - Protected with Role */}
-      <Route element={<AdminLayout />}>
-        <Route element={<RoleRoute allowedRoles={["admin"]} />}>
-          <Route path="/admin/dashboard" element={<AdminDashboard />} />
-          <Route path="/admin/books" element={<ManageBooks />} />
-          <Route path="/admin/books/add" element={<AddBook />} />
-          <Route path="/admin/books/edit/:id" element={<EditBook />} />
-          <Route path="/admin/bookings" element={<ManageBookings />} />
-          <Route path="/admin/users" element={<ManageUsers />} />
-          <Route path="/admin/activity-log" element={<ActivityLog />} />
+        {/* Admin Routes - Protected with Role */}
+        <Route element={<AdminLayout />}>
+          <Route element={<RoleRoute allowedRoles={["admin"]} />}>
+            <Route path="/admin/dashboard" element={<AdminDashboard />} />
+            <Route path="/admin/books" element={<AdminBooksPage />} />
+            <Route path="/admin/books/add" element={<AddBook />} />
+            <Route path="/admin/books/edit/:id" element={<EditBook />} />
+            <Route path="/admin/bookings" element={<ManageBookings />} />
+            <Route path="/admin/users" element={<ManageUsers />} />
+            <Route path="/admin/activity-log" element={<ActivityLog />} />
+          </Route>
         </Route>
       </Route>
 

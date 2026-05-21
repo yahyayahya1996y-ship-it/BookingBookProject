@@ -11,22 +11,22 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="bg-slate-900 text-white shadow-sm">
-      <div className="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-4 md:flex-row md:items-center md:justify-between">
-        <div>
-          <h1 className="text-xl font-semibold tracking-tight">Booking Book</h1>
-          <p className="mt-1 text-sm text-slate-300">Shared library and booking dashboard</p>
+    <nav className="bg-white border-b border-slate-200 shadow-sm">
+      <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+        <div className="flex flex-col gap-1">
+          <span className="text-lg font-semibold text-slate-900">Booking Book</span>
+          <span className="text-sm text-slate-500">Professional booking dashboard</span>
         </div>
 
         {user && (
-          <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center">
-            <div className="rounded-full bg-slate-800 px-4 py-2 text-sm text-slate-200">
-              Signed in as <span className="font-semibold text-white">{user.fullName}</span>
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+            <div className="rounded-2xl bg-slate-100 px-4 py-2 text-sm text-slate-700">
+              {user.fullName} • {user.role}
             </div>
             <button
               type="button"
               onClick={handleLogout}
-              className="inline-flex items-center justify-center rounded-full bg-rose-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-rose-600 focus:outline-none focus:ring-2 focus:ring-rose-400"
+              className="rounded-2xl bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-300"
             >
               Logout
             </button>

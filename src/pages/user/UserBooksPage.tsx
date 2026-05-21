@@ -68,6 +68,20 @@ const UserBooksPage = () => {
         onCategoryChange={setSelectedCategory}
       />
 
+      <div className="grid gap-4 rounded-3xl border border-slate-200 bg-white p-4 text-sm text-slate-600 shadow-sm sm:grid-cols-[1fr_auto] sm:items-center">
+        <div>
+          Showing <span className="font-semibold text-slate-900">{filteredBooks.length}</span> of <span className="font-semibold text-slate-900">{books.length}</span> books
+        </div>
+        <div className="inline-flex items-center justify-end gap-2 text-slate-500">
+          <span className="rounded-full bg-slate-100 px-3 py-1 text-xs uppercase tracking-[0.22em] text-slate-600">
+            {selectedCategory === "all" ? "All categories" : selectedCategory}
+          </span>
+          <span className="rounded-full bg-slate-100 px-3 py-1 text-xs uppercase tracking-[0.22em] text-slate-600">
+            {searchTerm ? "Filtered" : "All books"}
+          </span>
+        </div>
+      </div>
+
       {message ? (
         <div className="rounded-3xl border border-sky-200 bg-sky-50 px-5 py-4 text-slate-900 shadow-sm">
           {message}

@@ -34,6 +34,13 @@ const BookForm = ({ onBookAdded }: BookFormProps) => {
 
   return (
     <form onSubmit={handleSubmit} className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+      <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <h2 className="text-xl font-semibold text-slate-900">New book details</h2>
+          <p className="mt-1 text-sm text-slate-600">Fill out the form to add a new book to the collection.</p>
+        </div>
+      </div>
+
       <div className="grid gap-4 sm:grid-cols-2">
         <label className="block text-sm font-medium text-slate-700">
           Title

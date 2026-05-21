@@ -24,17 +24,31 @@ const UserDashboard = () => {
         </p>
       </header>
 
-      <div className="grid gap-6 xl:grid-cols-2">
+      <div className="grid gap-6 md:grid-cols-2">
         <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-          <h2 className="text-sm uppercase tracking-[0.22em] text-slate-500">Available Books</h2>
-          <p className="mt-4 text-4xl font-semibold text-slate-900">{bookCount}</p>
-          <p className="mt-2 text-sm text-slate-600">Books ready to be booked by users.</p>
+          <div className="flex items-center justify-between gap-4">
+            <div>
+              <h2 className="text-sm uppercase tracking-[0.22em] text-slate-500">Available Books</h2>
+              <p className="mt-4 text-4xl font-semibold text-slate-900">{bookCount}</p>
+            </div>
+            <span className="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-sm font-medium text-slate-700">
+              Explore
+            </span>
+          </div>
+          <p className="mt-4 text-sm text-slate-600">Books ready to be booked by users.</p>
         </div>
 
         <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-          <h2 className="text-sm uppercase tracking-[0.22em] text-slate-500">Your Bookings</h2>
-          <p className="mt-4 text-4xl font-semibold text-slate-900">{bookingCount}</p>
-          <p className="mt-2 text-sm text-slate-600">Bookings you have created in the app.</p>
+          <div className="flex items-center justify-between gap-4">
+            <div>
+              <h2 className="text-sm uppercase tracking-[0.22em] text-slate-500">Your Bookings</h2>
+              <p className="mt-4 text-4xl font-semibold text-slate-900">{bookingCount}</p>
+            </div>
+            <span className="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-sm font-medium text-slate-700">
+              Recent
+            </span>
+          </div>
+          <p className="mt-4 text-sm text-slate-600">Bookings you have created in the app.</p>
         </div>
       </div>
     </div>

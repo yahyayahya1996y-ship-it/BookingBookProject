@@ -2,8 +2,8 @@ import { Outlet } from 'react-router-dom'
 
 export const AuthLayout: React.FC = () => {
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', backgroundColor: '#f5f5f5' }}>
-      <div style={{ width: '100%', maxWidth: '400px' }}>
+    <div className="flex min-h-screen items-center justify-center bg-slate-100 px-4 py-10">
+      <div className="w-full max-w-md">
         <Outlet />
       </div>
     </div>

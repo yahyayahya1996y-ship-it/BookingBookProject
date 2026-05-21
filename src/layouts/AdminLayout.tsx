@@ -7,10 +7,12 @@ export const AdminLayout: React.FC = () => {
   return (
     <div className="min-h-screen bg-slate-100 text-slate-900">
       <Navbar />
-      <div className="flex min-h-[calc(100vh-140px)]">
+      <div className="flex min-h-[calc(100vh-100px)] flex-col md:flex-row">
         <Sidebar />
         <main className="flex-1 p-5 sm:p-8">
-          <Outlet />
+          <div className="mx-auto max-w-7xl rounded-3xl bg-white p-6 shadow-sm">
+            <Outlet />
+          </div>
         </main>
       </div>
       <Footer />

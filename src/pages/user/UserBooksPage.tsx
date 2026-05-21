@@ -1,19 +1,33 @@
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import BookCard from "../../features/books/components/BookCard";
+import BookFilters from "../../features/books/components/BookFilters";
 import type { Book } from "../../features/books/types/bookTypes";
 import { getBooks } from "../../features/books/services/bookService";
 import { createBooking } from "../../features/bookings/services/bookingService";
 
 const UserBooksPage = () => {
-  const [books, setBooks] = useState<Book[]>([]);
+  const [books] = useState<Book[]>(() => getBooks());
   const [message, setMessage] = useState<string | null>(null);
   const [isBooking, setIsBooking] = useState<string | null>(null);
+
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all");
+
   const { user } = useAuth();
 
-  useEffect(() => {
-    setBooks(getBooks());
-  }, []);
+  const filteredBooks = useMemo(() => {
+    return books.filter((book) => {
+      const matchesSearch =
+        book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        book.author.toLowerCase().includes(searchTerm.toLowerCase());
+
+      const matchesCategory =
+        selectedCategory === "all" || book.category === selectedCategory;
+
+      return matchesSearch && matchesCategory;
+    });
+  }, [books, searchTerm, selectedCategory]);
 
   const handleBookNow = (book: Book) => {
     if (!user) {
@@ -22,12 +36,14 @@ const UserBooksPage = () => {
     }
 
     setIsBooking(book.id);
+
     createBooking({
       bookId: book.id,
       bookTitle: book.title,
       bookAuthor: book.author,
       userName: user.fullName,
     });
+
     setMessage(`Booked ${book.title} successfully.`);
     setTimeout(() => setMessage(null), 4000);
     setIsBooking(null);
@@ -36,11 +52,21 @@ const UserBooksPage = () => {
   return (
     <div className="space-y-6 p-6">
       <header className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-        <h1 className="text-3xl font-semibold text-slate-900">Available Books</h1>
+        <h1 className="text-3xl font-semibold text-slate-900">
+          Available Books
+        </h1>
         <p className="mt-2 text-sm text-slate-600">
-          Browse the shared book collection and book your next read with one click.
+          Browse the shared book collection and reserve the titles you want.
         </p>
       </header>
+
+      <BookFilters
+        searchTerm={searchTerm}
+        selectedCategory={selectedCategory}
+        books={books}
+        onSearchChange={setSearchTerm}
+        onCategoryChange={setSelectedCategory}
+      />
 
       {message ? (
         <div className="rounded-3xl border border-sky-200 bg-sky-50 px-5 py-4 text-slate-900 shadow-sm">
@@ -48,23 +74,37 @@ const UserBooksPage = () => {
         </div>
       ) : null}
 
-      <section className="grid gap-6">
-        {books.map((book) => (
-          <div key={book.id} className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-            <BookCard book={book} />
-            <div className="mt-4 flex justify-end">
-              <button
-                type="button"
-                onClick={() => handleBookNow(book)}
-                disabled={isBooking === book.id}
-                className="rounded-3xl bg-sky-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-sky-700 disabled:cursor-not-allowed disabled:opacity-50"
-              >
-                {isBooking === book.id ? "Booking..." : "Book Now"}
-              </button>
+      {books.length === 0 ? (
+        <div className="rounded-3xl border border-dashed border-slate-300 bg-slate-50 p-8 text-center text-slate-500 shadow-sm">
+          No books are currently available. Please check back later.
+        </div>
+      ) : filteredBooks.length === 0 ? (
+        <div className="rounded-3xl border border-dashed border-slate-300 bg-slate-50 p-8 text-center text-slate-500 shadow-sm">
+          No books match your search or filters.
+        </div>
+      ) : (
+        <section className="grid gap-6">
+          {filteredBooks.map((book) => (
+            <div
+              key={book.id}
+              className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
+            >
+              <BookCard book={book} />
+
+              <div className="mt-4 flex justify-end">
+                <button
+                  type="button"
+                  onClick={() => handleBookNow(book)}
+                  disabled={isBooking === book.id}
+                  className="rounded-3xl bg-sky-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-sky-700 disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  {isBooking === book.id ? "Booking..." : "Book Now"}
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
-      </section>
+          ))}
+        </section>
+      )}
     </div>
   );
 };

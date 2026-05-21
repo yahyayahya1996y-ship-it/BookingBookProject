@@ -20,10 +20,10 @@ export const MyBookings = () => {
   return (
     <div className="space-y-6 p-6">
       <header className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-        <h1 className="text-3xl font-semibold text-slate-900">My Bookings</h1>
-        <p className="mt-2 text-sm text-slate-600">
-          Review all bookings created from your user account.
-        </p>
+        <div>
+          <h1 className="text-3xl font-semibold text-slate-900">My Bookings</h1>
+          <p className="mt-2 text-sm text-slate-600">Review your current bookings and track their status.</p>
+        </div>
       </header>
 
       <section className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">

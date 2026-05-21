@@ -26,11 +26,20 @@ export const ManageBookings = () => {
 
   return (
     <div className="mx-auto max-w-7xl space-y-6 px-5 py-6 sm:px-6 lg:px-8">
-      <header className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-        <h1 className="text-3xl font-semibold text-slate-900">Manage Bookings</h1>
-        <p className="mt-2 text-sm text-slate-600">
-          Review all bookings created by users in the system.
-        </p>
+      <header className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm">
+        <div className="flex flex-col gap-6 xl:flex-row xl:items-center xl:justify-between">
+          <div className="space-y-3">
+            <p className="text-sm uppercase tracking-[0.32em] text-slate-500">Admin bookings</p>
+            <h1 className="text-3xl font-semibold text-slate-900">Manage booking requests</h1>
+            <p className="max-w-2xl text-sm leading-6 text-slate-600">
+              Review booking requests from users, update statuses, and keep the library workflow moving smoothly.
+            </p>
+          </div>
+          <div className="rounded-3xl bg-slate-50 px-5 py-4 text-slate-700 ring-1 ring-slate-200">
+            <p className="text-sm uppercase tracking-[0.24em] text-slate-500">Live status</p>
+            <p className="mt-2 text-2xl font-semibold text-slate-900">{totalBookings} bookings</p>
+          </div>
+        </div>
       </header>
 
       <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">

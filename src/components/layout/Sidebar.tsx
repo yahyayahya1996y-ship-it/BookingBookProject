@@ -2,44 +2,64 @@ import { Link } from 'react-router-dom'
 
 export const Sidebar: React.FC = () => {
   return (
-    <aside style={{ width: '250px', backgroundColor: '#f9f9f9', borderRight: '1px solid #ddd', padding: '1rem' }}>
-      <div style={{ marginBottom: '2rem' }}>
-        <h3 style={{ marginTop: 0 }}>User Menu</h3>
-        <ul style={{ listStyle: 'none', padding: 0 }}>
-          <li style={{ marginBottom: '0.5rem' }}>
-            <Link to="/user/dashboard" style={{ color: '#333', textDecoration: 'none' }}>Dashboard</Link>
-          </li>
-          <li style={{ marginBottom: '0.5rem' }}>
-            <Link to="/user/books" style={{ color: '#333', textDecoration: 'none' }}>Available Books</Link>
-          </li>
-          <li style={{ marginBottom: '0.5rem' }}>
-            <Link to="/user/my-bookings" style={{ color: '#333', textDecoration: 'none' }}>My Bookings</Link>
-          </li>
-          <li style={{ marginBottom: '0.5rem' }}>
-            <Link to="/user/profile" style={{ color: '#333', textDecoration: 'none' }}>Profile</Link>
-          </li>
-        </ul>
-      </div>
+    <aside className="w-full border-b border-slate-200 bg-white p-6 md:w-72 md:border-b-0 md:border-r md:bg-slate-50 xl:w-64">
+      <div className="flex flex-col gap-8">
+        <div>
+          <h3 className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-slate-500">User Menu</h3>
+          <ul className="space-y-3">
+            <li>
+              <Link to="/user/dashboard" className="block rounded-2xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-100 hover:text-slate-900">
+                Dashboard
+              </Link>
+            </li>
+            <li>
+              <Link to="/user/books" className="block rounded-2xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-100 hover:text-slate-900">
+                Available Books
+              </Link>
+            </li>
+            <li>
+              <Link to="/user/my-bookings" className="block rounded-2xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-100 hover:text-slate-900">
+                My Bookings
+              </Link>
+            </li>
+            <li>
+              <Link to="/user/profile" className="block rounded-2xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-100 hover:text-slate-900">
+                Profile
+              </Link>
+            </li>
+          </ul>
+        </div>
 
-      <div>
-        <h3>Admin Menu</h3>
-        <ul style={{ listStyle: 'none', padding: 0 }}>
-          <li style={{ marginBottom: '0.5rem' }}>
-            <Link to="/admin/dashboard" style={{ color: '#333', textDecoration: 'none' }}>Dashboard</Link>
-          </li>
-          <li style={{ marginBottom: '0.5rem' }}>
-            <Link to="/admin/books" style={{ color: '#333', textDecoration: 'none' }}>Manage Books</Link>
-          </li>
-          <li style={{ marginBottom: '0.5rem' }}>
-            <Link to="/admin/bookings" style={{ color: '#333', textDecoration: 'none' }}>Manage Bookings</Link>
-          </li>
-          <li style={{ marginBottom: '0.5rem' }}>
-            <Link to="/admin/users" style={{ color: '#333', textDecoration: 'none' }}>Manage Users</Link>
-          </li>
-          <li style={{ marginBottom: '0.5rem' }}>
-            <Link to="/admin/activity-log" style={{ color: '#333', textDecoration: 'none' }}>Activity Log</Link>
-          </li>
-        </ul>
+        <div>
+          <h3 className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-slate-500">Admin Menu</h3>
+          <ul className="space-y-3">
+            <li>
+              <Link to="/admin/dashboard" className="block rounded-2xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-100 hover:text-slate-900">
+                Dashboard
+              </Link>
+            </li>
+            <li>
+              <Link to="/admin/books" className="block rounded-2xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-100 hover:text-slate-900">
+                Manage Books
+              </Link>
+            </li>
+            <li>
+              <Link to="/admin/bookings" className="block rounded-2xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-100 hover:text-slate-900">
+                Manage Bookings
+              </Link>
+            </li>
+            <li>
+              <Link to="/admin/users" className="block rounded-2xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-100 hover:text-slate-900">
+                Manage Users
+              </Link>
+            </li>
+            <li>
+              <Link to="/admin/activity-log" className="block rounded-2xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-100 hover:text-slate-900">
+                Activity Log
+              </Link>
+            </li>
+          </ul>
+        </div>
       </div>
     </aside>
   )

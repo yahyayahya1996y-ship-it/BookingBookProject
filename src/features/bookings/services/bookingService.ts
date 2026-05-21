@@ -1,5 +1,4 @@
-import type { Booking } from "../types/bookingTypes";
-
+import type { Booking, BookingStatus } from "../types/bookingTypes";
 const BOOKINGS_STORAGE_KEY = "booking_book_bookings";
 
 export const getBookings = (): Booking[] => {
@@ -37,4 +36,18 @@ export const createBooking = (bookingData: Omit<Booking, "id" | "status" | "crea
 
 export const getBookingsByUser = (userName: string): Booking[] => {
   return getBookings().filter((booking) => booking.userName === userName);
+};
+export const updateBookingStatus = (
+  bookingId: string,
+  status: BookingStatus
+): Booking[] => {
+  const bookings = getBookings();
+
+  const updatedBookings = bookings.map((booking) =>
+    booking.id === bookingId ? { ...booking, status } : booking
+  );
+
+  saveBookings(updatedBookings);
+
+  return updatedBookings;
 };

@@ -12,7 +12,7 @@ const AdminDashboard = () => {
   }, []);
 
   return (
-    <div className="space-y-8 p-6">
+    <div className="mx-auto max-w-7xl space-y-8 px-5 py-6 sm:px-6 lg:px-8">
       <header className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
         <h1 className="text-3xl font-semibold text-slate-900">Admin Dashboard</h1>
         <p className="mt-2 text-sm text-slate-600">

@@ -5,11 +5,11 @@ import { Footer } from '../components/layout/Footer'
 
 export const AdminLayout: React.FC = () => {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+    <div className="min-h-screen bg-slate-100 text-slate-900">
       <Navbar />
-      <div style={{ display: 'flex', flex: 1 }}>
+      <div className="flex min-h-[calc(100vh-140px)]">
         <Sidebar />
-        <main style={{ flex: 1, padding: '20px', backgroundColor: '#f5f5f5' }}>
+        <main className="flex-1 p-5 sm:p-8">
           <Outlet />
         </main>
       </div>

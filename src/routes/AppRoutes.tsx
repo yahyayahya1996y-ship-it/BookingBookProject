@@ -5,8 +5,7 @@ import { Unauthorized } from "../pages/errors/Unauthorized";
 
 // Layouts
 import { AuthLayout } from "../layouts/AuthLayout";
-import { UserLayout } from "../layouts/UserLayout";
-import { AdminLayout } from "../layouts/AdminLayout";
+import MainLayout from "../components/layout/MainLayout";
 
 // Route Guards
 import RoleRoute from "./RoleRoute";
@@ -43,7 +42,7 @@ const AppRoutes = () => {
 
       <Route element={<ProtectedRoute />}>
         {/* User Routes - Protected with Role */}
-        <Route element={<UserLayout />}>
+        <Route element={<MainLayout />}>
           <Route element={<RoleRoute allowedRoles={["user"]} />}>
             <Route path="/user/dashboard" element={<UserDashboard />} />
             <Route path="/user/books" element={<UserBooksPage />} />
@@ -53,7 +52,7 @@ const AppRoutes = () => {
         </Route>
 
         {/* Admin Routes - Protected with Role */}
-        <Route element={<AdminLayout />}>
+        <Route element={<MainLayout />}>
           <Route element={<RoleRoute allowedRoles={["admin"]} />}>
             <Route path="/admin/dashboard" element={<AdminDashboard />} />
             <Route path="/admin/books" element={<AdminBooksPage />} />

@@ -11,7 +11,7 @@ const MainLayout = () => {
   const userLinks = [
     { label: "Dashboard", path: "/user/dashboard" },
     { label: "Available Books", path: "/user/books" },
-    { label: "My Bookings", path: "/user/bookings" },
+    { label: "My Bookings", path: "/user/my-bookings" },
     { label: "Profile", path: "/user/profile" },
   ];
 
